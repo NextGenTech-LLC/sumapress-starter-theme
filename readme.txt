@@ -1,4 +1,4 @@
-=== gutenbergtheme ===
+=== SumaPress Starter Theme ===
 
 Contributors: everyone welcome
 Tags: translation-ready

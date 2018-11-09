@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Gutenbergtheme
+ * @package SumaPressTheme
  */
 
 ?>
@@ -23,7 +23,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php gutenbergtheme_posted_on(); ?>
+			<?php sumapress_theme_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
@@ -52,6 +52,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php gutenbergtheme_entry_footer(); ?>
+		<?php sumapress_theme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
