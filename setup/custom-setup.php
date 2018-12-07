@@ -6,6 +6,8 @@
  */
 
 $custom_setup = [
+    'google-fonts'              => 'Pacifico|Roboto:300i,400,400i,500,500i,700,700i',
+    'font-family'               => '"Pacifico", cursive;',
     'blocks-width'              => 636,
     'blocks-max-width'          => 1100,
     'wp-block-styles'           => true, // Enqueued or not core blocks default styles

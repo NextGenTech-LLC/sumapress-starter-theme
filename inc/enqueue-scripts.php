@@ -31,7 +31,7 @@ function sumapress_theme_scripts() {
  */
 function sumapress_theme_fonts_url() {
 	$fonts_url = '';
-
+	include get_template_directory() . '/setup/custom-setup.php';
 	/*
 	 *Translators: If there are characters in your language that are not
 	 * supported by Noto Serif, translate this to 'off'. Do not translate
@@ -41,7 +41,7 @@ function sumapress_theme_fonts_url() {
 
 	if ( 'off' !== $notoserif ) {
 		$font_families = array();
-		$font_families[] = 'Noto Serif:400,400italic,700,700italic';
+		$font_families[] = $custom_setup['google-fonts'];
 
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
