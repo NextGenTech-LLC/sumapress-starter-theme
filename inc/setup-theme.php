@@ -36,7 +36,9 @@ if ( ! function_exists( 'sumapress_theme_setup' ) ) :
 		 */
 		load_theme_textdomain( 'sumapress-theme', get_template_directory() . '/languages' );
 
-		// Add default posts and comments RSS feed links to head.
+		/*
+		 * Add default posts and comments RSS feed links to head.
+		 */
 		add_theme_support( 'automatic-feed-links' );
 
 		/*
@@ -54,7 +56,9 @@ if ( ! function_exists( 'sumapress_theme_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+		/*
+		 * This theme uses wp_nav_menu() in one location.
+		 */
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'sumapress-theme' ),
 		) );
@@ -71,13 +75,17 @@ if ( ! function_exists( 'sumapress_theme_setup' ) ) :
 			'caption',
 		) );
 
-		// Set up the WordPress core custom background feature.
+		/*
+		 * Set up the WordPress core custom background feature.
+		 */
 		add_theme_support( 'custom-background', apply_filters( '_s_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
 
-		// Add theme support for selective refresh for widgets.
+		/*
+		 * Add theme support for selective refresh for widgets.
+		 */
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		/**
@@ -92,104 +100,78 @@ if ( ! function_exists( 'sumapress_theme_setup' ) ) :
 			'flex-height' => true,
 		) );
 
+
+		/*******************************************************************
+		 * *****************************************************************
+		 * Get setup GUTENBERG theme configuration --> $custom_setup
+		 * *****************************************************************
+		 ******************************************************************/
+
+		require_once get_template_directory() . '/setup/custom-setup.php';
+
 		/**
 		 * Add support for full and wide align
 		 */
 		add_theme_support( 'align-wide' );
 
 		/**
-		 * Allow the ability to set custom editor styles with css
+		 * Enqueuing the editor style --> style-editor.css
 		 */
-		add_theme_support( 'editor-styles' );
+		if( $custom_setup['style-editor'] ) {
 
-		/**
-		 * Set dark editor style ( add before support to editor styles )
-		 */
-		add_theme_support( 'dark-editor-style' );
+			/**
+			 * Allow the ability to set custom editor styles with css
+			 */
+			add_theme_support( 'editor-styles' );
 
-		/**
-		 * Enqueuing the editor style
-		 */
-		//add_editor_style( 'css/style-editor.css' );
+			/**
+			 * Set dark editor style ( add before support to editor styles )
+			 */
+			add_theme_support( 'dark-editor-style' );
+
+			add_editor_style( 'css/style-editor.css' );
+		}
 
 		/**
 		 * Core blocks enqueued default styles only for editing.
 		 * Add this if you’d like to use default styles in your theme.
 		 */
-		add_theme_support( 'wp-block-styles' );
+		if( $custom_setup['wp-block-styles'] ) {
+			add_theme_support( 'wp-block-styles' );
+		}
 
 		/**
 		 * Set and limit the colors to show into Gutenberg editor
 		 */
-		$custom_colors = array(
-			array(
-				'name'  => __( 'Strong Blue', 'sumapress-theme' ),
-				'slug'  => 'strong-blue',
-				'color' => '#0073aa',
-			),
-			array(
-				'name'  => __( 'Lighter Blue', 'sumapress-theme' ),
-				'slug'  => 'lighter-blue',
-				'color' => '#229fd8',
-			),
-			array(
-				'name'  => __( 'Very Light Gray', 'sumapress-theme' ),
-				'slug'  => 'very-light-gray',
-				'color' => '#eee',
-			),
-			array(
-				'name'  => __( 'Very Dark Gray', 'sumapress-theme' ),
-				'slug'  => 'very-dark-gray',
-				'color' => '#444',
-			),
-		);
-		add_theme_support( 'editor-color-palette', $custom_colors );
+		if( $custom_setup['set-custom-colors'] ) {
+			add_theme_support( 'editor-color-palette', $custom_setup['colors'] );
+		}
 
 		/**
 		 * Disable the ability to set custom colors
 		 */
-		add_theme_support( 'disable-custom-colors' );
+		if( $custom_setup['disable-custom-colors'] ) {
+			add_theme_support( 'disable-custom-colors' );
+		}
 
 		/**
 		 * Set and limit the fonts sizes to show into Gutenberg editor
 		 */
-		$custom_fonts = array(
-			array(
-				'name' 		=> esc_html__( 'small', 'sumapress' ),
-				'shortName' => esc_html__( 'S', 'sumapress' ),
-				'size' 		=> 12,
-				'slug' 		=> 'small'
-			),
-			array(
-				'name' 		=> esc_html__( 'regular', 'sumapress' ),
-				'shortName' => esc_html__( 'M', 'sumapress' ),
-				'size' 		=> 16,
-				'slug' 		=> 'regular'
-			),
-			array(
-				'name' 		=> esc_html__( 'large', 'sumapress' ),
-				'shortName' => esc_html__( 'L', 'sumapress' ),
-				'size' 		=> 36,
-				'slug' 		=> 'large'
-			),
-			array(
-				'name' 		=> esc_html__( 'larger', 'sumapress' ),
-				'shortName' => esc_html__( 'XL', 'sumapress' ),
-				'size' 		=> 50,
-				'slug' 		=> 'larger'
-			)
-		);
-		add_theme_support( 'editor-font-sizes', $custom_fonts );
+		if( $custom_setup['set-custom-font-sizes'] ) {
+			add_theme_support( 'editor-font-sizes', $custom_setup['fonts'] );
+		}
 
 		/**
 		 * Disable the ability to set custom font sizes
 		 */
-		add_theme_support( 'disable-custom-font-sizes' );
+		if( $custom_setup['disable-custom-font-sizes'] ) {
+			add_theme_support( 'disable-custom-font-sizes' );
+		}
 
 		/**
 		 * Add support for responsive embeds and keep its aspect ratio
 		 */
 		add_theme_support( 'responsive-embeds' );
 	}
-	
+
 endif;

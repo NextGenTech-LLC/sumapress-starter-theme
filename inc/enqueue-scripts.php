@@ -12,7 +12,8 @@
 function sumapress_theme_scripts() {
 	wp_enqueue_style( 'sumapress-base-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'sumapress-themeblocks-style', get_template_directory_uri() . '/css/blocks.css' );
+	wp_enqueue_style( 'sumapress-blocks-style', get_template_directory_uri() . '/css/blocks.css' );
+	wp_enqueue_style( 'sumapress-setup-blocks-style', get_template_directory_uri() . '/setup/blocks.css.php' );
 
 	wp_enqueue_style( 'sumapress-theme-fonts', sumapress_theme_fonts_url() );
 
