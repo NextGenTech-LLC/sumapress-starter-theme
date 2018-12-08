@@ -19,6 +19,14 @@ function sumapress_theme_scripts() {
 		wp_enqueue_script( 'sumapress-bootstrap-bundle', $custom_setup['bootstrap_files']['bundle'], ['jquery', 'sumapress-bootstrap'], '4.1.3', true );
 	}
 
+	if ( isset( $custom_setup['icons-css'] ) )  {
+		wp_enqueue_style( 'sumapress-icons', $custom_setup['icons-css'] );
+	}
+
+	if ( isset( $custom_setup['icons-js'] ) )  {
+		wp_enqueue_script( 'sumapress-icons', $custom_setup['icons-js'], [], wp_get_theme()->get( 'Version' ), true );
+	}
+
 	wp_enqueue_style( 'sumapress-base-style', get_stylesheet_uri(), [], filemtime( get_template_directory() . '/style.css' ) );
 
 	wp_enqueue_style( 'sumapress-blocks-style', get_template_directory_uri() . '/css/blocks.css', [], filemtime( get_template_directory() . '/css/blocks.css' ) );

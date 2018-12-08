@@ -13,6 +13,9 @@ $custom_setup = [
             'js'                => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js',
             'bundle'            => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js'
         ],
+    // Uncomments next options about icons to insert assets like for example Fontawesome (choose one or both)
+    //'icons-css'                 => 'https://use.fontawesome.com/releases/v5.5.0/css/all.css',
+    //'icons-js'                  => 'https://use.fontawesome.com/releases/v5.5.0/js/all.js',
     'google-fonts'              => 'Noto Serif:400,400italic,700,700italic',
     'font-family'               => '"Noto Serif", serif;',
     'blocks-width'              => 636,
