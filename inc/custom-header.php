@@ -11,6 +11,7 @@
  * @package SumaPressTheme
  */
 
+add_action( 'after_setup_theme', 'sumapress_theme_custom_header_setup' );
 /**
  * Set up the WordPress core custom header feature.
  *
@@ -26,7 +27,6 @@ function sumapress_theme_custom_header_setup() {
 		'wp-head-callback'       => 'sumapress_theme_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'sumapress_theme_custom_header_setup' );
 
 if ( ! function_exists( 'sumapress_theme_header_style' ) ) :
 	/**

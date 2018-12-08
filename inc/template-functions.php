@@ -5,6 +5,7 @@
  * @package SumaPressTheme
  */
 
+add_filter( 'body_class', 'sumapress_theme_body_classes' );
 /**
  * Adds custom classes to the array of body classes.
  *
@@ -19,8 +20,8 @@ function sumapress_theme_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'sumapress_theme_body_classes' );
 
+add_action( 'wp_head', 'sumapress_theme_pingback_header' );
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
@@ -29,4 +30,3 @@ function sumapress_theme_pingback_header() {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', 'sumapress_theme_pingback_header' );
