@@ -6,12 +6,13 @@
  */
 
 $custom_setup = [
-    'google-fonts'              => 'Pacifico|Roboto:300i,400,400i,500,500i,700,700i',
-    'font-family'               => '"Pacifico", cursive;',
+    'google-fonts'              => 'Noto Serif:400,400italic,700,700italic',
+    'font-family'               => '"Noto Serif", serif;',
     'blocks-width'              => 636,
     'blocks-max-width'          => 1100,
     'wp-block-styles'           => true, // Enqueued or not core blocks default styles
-    'style-editor'              => false, // Enqueue or not the /css/style-editor.css
+    'style-editor'              => false, // Enqueue or not the next option 'styles-files-editor'
+    'styles-files-editor'       => ['css/style-editor.css', 'css/blocks.css'],
     'disable-custom-colors'     => true,
     'set-custom-colors'         => true, //Set and limit the colors to show into Gutenberg editor
     'colors'                    => [

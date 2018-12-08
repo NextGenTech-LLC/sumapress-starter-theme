@@ -129,7 +129,10 @@ if ( ! function_exists( 'sumapress_theme_setup' ) ) :
 			 */
 			add_theme_support( 'dark-editor-style' );
 
-			add_editor_style( 'css/style-editor.css' );
+			/**
+			 * Set styles files to add into the editor
+			 */
+			add_editor_style( $custom_setup['styles-files-editor'] );
 		}
 
 		/**
