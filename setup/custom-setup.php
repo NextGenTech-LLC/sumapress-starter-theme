@@ -6,6 +6,13 @@
  */
 
 $custom_setup = [
+    'bootstrap'                 => false, //enqueue or not next 'bootstrap_files' from https://getbootstrap.com/ CDN
+    'bootstrap_files'           => 
+        [ 
+            'css'               => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', 
+            'js'                => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js',
+            'bundle'            => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js'
+        ],
     'google-fonts'              => 'Noto Serif:400,400italic,700,700italic',
     'font-family'               => '"Noto Serif", serif;',
     'blocks-width'              => 636,
