@@ -5,12 +5,11 @@
  * @package SumaPressTheme
  */
 
-add_action( 'current_screen', 'sumapress_gutenberg_removal' );
 /**
  * Limit where you can work with Gutenberg
  * base on /setup/custom-setup.php --> 'gutenfree'
  */
-function sumapress_gutenberg_removal() {
+add_action( 'current_screen', function() {
 
 	// WP 5.0+ requires Classic Editor & WP 4.9- requires Gutenberg
 	if ( ( version_compare( get_bloginfo( 'version' ), 5.0, '<=' ) && ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) || ( version_compare( get_bloginfo( 'version' ), 5.0, '=>' ) && ! is_plugin_active( 'classic-editor/classic-editor.php' ) ) ) {
@@ -26,14 +25,13 @@ function sumapress_gutenberg_removal() {
 		add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
 	}
 
-}
+} );
 
-add_action( 'allowed_block_types', 'sumapress_allowed_blocks_to_post_types', 10 , 2 );
 /**
  * Limit and allowed blocks into a post type
  * base on /setup/custom-setup.php --> 'blocks_on_posts' 
  */
-function sumapress_allowed_blocks_to_post_types( $allowed_block_types, $post ) {
+add_action( 'allowed_block_types', function( $allowed_block_types, $post ) {
 
 	include get_template_directory() . '/setup/custom-setup.php';
 
@@ -43,13 +41,12 @@ function sumapress_allowed_blocks_to_post_types( $allowed_block_types, $post ) {
 
 	return $allowed_block_types;
 
-}
+}, 10, 2 );
 
-add_action( 'register_post_type_args', 'sumapress_add_templates_to_post_types', 10 , 2 );
 /**
  * Add Gutenberg templates to post types
  */
-function sumapress_add_templates_to_post_types( $args, $post_type ) {
+add_action( 'register_post_type_args', function( $args, $post_type ) {
 
 	include get_template_directory() . '/setup/custom-setup.php';
 
@@ -67,4 +64,4 @@ function sumapress_add_templates_to_post_types( $args, $post_type ) {
 
 	return $args;
 
-}
+}, 10, 2 );

@@ -5,28 +5,29 @@
  * @package SumaPressTheme
  */
 
-add_filter( 'body_class', 'sumapress_theme_body_classes' );
 /**
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
  * @return array
  */
-function sumapress_theme_body_classes( $classes ) {
-	// Adds a class of hfeed to non-singular pages.
+add_filter( 'body_class', function( $classes ) {
+
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
 
 	return $classes;
-}
 
-add_action( 'wp_head', 'sumapress_theme_pingback_header' );
+} );
+
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
-function sumapress_theme_pingback_header() {
+add_action( 'wp_head', function() {
+
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
-}
+	
+} );

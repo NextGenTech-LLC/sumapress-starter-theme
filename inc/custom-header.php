@@ -11,13 +11,13 @@
  * @package SumaPressTheme
  */
 
-add_action( 'after_setup_theme', 'sumapress_theme_custom_header_setup' );
-/**
+ /**
  * Set up the WordPress core custom header feature.
  *
  * @uses sumapress_theme_header_style()
  */
-function sumapress_theme_custom_header_setup() {
+add_action( 'after_setup_theme', function() {
+
 	add_theme_support( 'custom-header', apply_filters( 'sumapress_theme_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
@@ -26,15 +26,18 @@ function sumapress_theme_custom_header_setup() {
 		'flex-height'            => true,
 		'wp-head-callback'       => 'sumapress_theme_header_style',
 	) ) );
-}
+
+} );
 
 if ( ! function_exists( 'sumapress_theme_header_style' ) ) :
+	
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
 	 * @see sumapress_theme_custom_header_setup().
 	 */
 	function sumapress_theme_header_style() {
+
 		$header_text_color = get_header_textcolor();
 
 		/*
@@ -69,4 +72,5 @@ if ( ! function_exists( 'sumapress_theme_header_style' ) ) :
 		</style>
 		<?php
 	}
+	
 endif;

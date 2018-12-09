@@ -5,11 +5,10 @@
  * @package SumaPressTheme
  */
 
-add_action( 'wp_enqueue_scripts', 'sumapress_theme_scripts' );
-/**
+ /**
  * Enqueue scripts and styles.
  */
-function sumapress_theme_scripts() {
+add_action( 'wp_enqueue_scripts', function() {
 
 	include get_template_directory() . '/setup/custom-setup.php';
 
@@ -42,14 +41,17 @@ function sumapress_theme_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-}
+} );
 
 /**
  * Register Google Fonts
  */
 function sumapress_theme_fonts_url() {
+
 	$fonts_url = '';
+
 	include get_template_directory() . '/setup/custom-setup.php';
+	
 	/*
 	 *Translators: If there are characters in your language that are not
 	 * supported by Noto Serif, translate this to 'off'. Do not translate

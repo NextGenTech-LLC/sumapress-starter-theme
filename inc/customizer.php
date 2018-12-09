@@ -5,13 +5,13 @@
  * @package SumaPressTheme
  */
 
-add_action( 'customize_register', 'sumapress_theme_customize_register' );
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function sumapress_theme_customize_register( $wp_customize ) {
+add_action( 'customize_register', function( $wp_customize ) {
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -26,7 +26,8 @@ function sumapress_theme_customize_register( $wp_customize ) {
 			'render_callback' => 'sumapress_theme_customize_partial_blogdescription',
 		) );
 	}
-}
+
+} );
 
 /**
  * Render the site title for the selective refresh partial.
@@ -46,11 +47,12 @@ function sumapress_theme_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
-add_action( 'customize_preview_init', 'sumapress_theme_customize_preview_js' );
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function sumapress_theme_customize_preview_js() {
+add_action( 'customize_preview_init', function() {
+	
 	wp_enqueue_script( 'sumapress-theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), filemtime( get_template_directory() . '/js/customizer.js' ), true );
-}
+
+} );
 
