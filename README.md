@@ -1,8 +1,11 @@
 # SumaPress starter theme
-This theme is designed to showcase what Gutenberg can do with regards to themes. It is intended as a work in progress, at least until v1 of the new editor (and maybe beyond).
 
-# Block focused
-If something isn't a block yet, this theme will not have it. As each block happens, the theme will gain that functionality.
+This theme is designed as starter theme to showcase what Gutenberg can do with regards to themes.
 
-# Styling just like Gutenberg
-The idea of the default look for this theme is to as closely replicate that of the Gutenberg editor output as possible. As a result the focus is on that styling not creating a new look.. yet. As things grow, we may have styles and go further into what the theme can have... who knows.
+You can change and expand the base behaviour very easy with the setup file that you can find in: `/setup/custom-setup.php`
+
+* Add external resources: "Bootstrap", "Fontawesome" or others.  
+* Setup styles: blocks width, blocks max width and style editor.
+* Setup colors: disable custom colors and set custom colors. 
+* Setup fonts: set google fonts, disable custom font sizes and set custom font sizes. 
+* Limit where and how work with Gutenberg: limit gutenberg on posts, limit blocks on posts and set templates on posts.
