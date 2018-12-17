@@ -5,9 +5,19 @@
  * @package SumaPressTheme
  */
 
- /**
- * Enqueue scripts and styles.
- */
+/**
+* Enqueue blocks styles in backend.
+*/
+add_action( 'enqueue_block_editor_assets', function() {
+
+	wp_enqueue_style( 'sumapress-blocks-style', get_template_directory_uri() . '/css/blocks.css', [], filemtime( get_template_directory() . '/css/blocks.css' ) );
+	wp_enqueue_style( 'sumapress-setup-blocks-style', get_template_directory_uri() . '/setup/blocks.css.php', [], filemtime( get_template_directory() . '/setup/blocks.css.php' ) );
+	
+} );
+
+/**
+* Enqueue scripts and styles.
+*/
 add_action( 'wp_enqueue_scripts', function() {
 
 	include get_template_directory() . '/setup/custom-setup.php';
