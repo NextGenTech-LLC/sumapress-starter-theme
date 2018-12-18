@@ -10,7 +10,7 @@ header('Cache-control: must-revalidate');
 /**
  * Setup theme
  */
-include __DIR__ . '\custom-setup.php';
+include __DIR__ . '/custom-setup.php';
 
 ?>
 /*--------------------------------------------------------------
